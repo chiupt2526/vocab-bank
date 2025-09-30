@@ -1,11 +1,13 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>LAN2102 Vocabulary Bank</title>
+  <title>Vocabulary Flashcard Game</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { font-family: Lexie Readable, sans-serif; margin: 20px; text-align: center; }
+    body { font-family: Arial, sans-serif; margin: 20px; text-align: center; }
     .filter-row { margin-bottom: 10px; }
     .filter-button {
       padding: 10px 15px;
@@ -66,7 +68,7 @@
   </style>
 </head>
 <body>
-  <h2>LAN2102 Vocabulary Bank</h2>
+  <h2>Vocabulary Flashcard Game</h2>
   <div class="filter-row" id="category-filters">
     <button class="filter-button" data-category="All">All</button>
     <button class="filter-button" data-category="Noun">Nouns</button>
@@ -82,7 +84,6 @@
     <button class="filter-button" data-range="A-Z">A-Z</button>
   </div>
   <div class="card-container" id="card-container"></div>
-  <div id="card-counts" style="margin: 20px 0; font-weight: bold;"></div>
 
   <script src="vocab_data.js"></script>
   <script>
@@ -108,22 +109,7 @@
         'U-Z': ['U','V','W','X','Y','Z']
       };
       return ranges[range].includes(firstChar);
-      updateCardCounts(filteredData);
     }
-    
-function updateCardCounts(filteredData) {
-    const total = filteredData.length;
-    const nounCount = filteredData.filter(item => item.Category === "Noun").length;
-    const verbCount = filteredData.filter(item => item.Category === "Verb").length;
-    const adjectiveCount = filteredData.filter(item => item.Category === "Adjective").length;
-
-    document.getElementById("card-counts").innerHTML = `
-        Total Cards: ${total} |
-        Nouns: ${nounCount} |
-        Verbs: ${verbCount} |
-        Adjectives: ${adjectiveCount}
-    `;
-}
 
     function renderCards() {
       cardContainer.innerHTML = '';
