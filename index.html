@@ -82,7 +82,10 @@
     <button class="filter-button" data-range="P-T">P-T</button>
     <button class="filter-button" data-range="U-Z">U-Z</button>
   </div>
-  <p id="card-count" style="margin-top: 10px; font-weight: bold;"></p>
+  <div id="cardCountDisplay" style="text-align:center; margin-top:10px; font-weight:bold;">
+  Cards Sorted: 0
+  </div>
+
   <div class="card-container" id="card-container"></div>
 
   <script src="vocab_data.js"></script>
@@ -178,5 +181,16 @@
 
     renderCards();
   </script>
+  
+<script>
+  function updateCardCount(count) {
+    const display = document.getElementById('cardCountDisplay');
+    if (display) {
+      display.textContent = 'Cards Sorted: ' + count;
+      updateCardCount(filteredCards.length);
+    }
+  }
+</script>
+
 </body>
 </html>
