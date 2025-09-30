@@ -1,132 +1,195 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>LAN2102 Vocabulary Bank</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { font-family: Lexie Readable, sans-serif; margin: 0; padding: 20px; background: #f5f5f5; }
-    .filter-buttons { text-align: center; margin-bottom: 10px; }
-    .filter-buttons button { margin: 5px; padding: 10px 15px; border-radius: 10px; border: 1px solid #ccc; cursor: pointer; }
-    .filter-buttons button.active { background-color: #333; color: white; }
-    .card-count { text-align: center; margin: 10px; font-weight: bold; }
-    .flashcards { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
-    .card { width: 200px; perspective: 1000px; }
-    .card-inner { position: relative; width: 100%; height: 200px; text-align: center; transition: transform 0.6s; transform-style: preserve-3d; }
-    .card.flipped .card-inner { transform: rotateY(180deg); }
-    .card-front, .card-back {
-      position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
-      border-radius: 15px; padding: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      display: flex; flex-direction: column; justify-content: space-between;
+    body { font-family: Lexie Readable, sans-serif; margin: 20px; text-align: center; }
+    .filter-row { margin-bottom: 10px; }
+    .filter-button {
+      padding: 10px 15px;
+      margin: 5px;
+      border: 2px solid #333;
+      border-radius: 10px;
+      background-color: #eee;
+      cursor: pointer;
     }
-    .card-front { background-color: #fff; }
-    .card-back { background-color: #fff; transform: rotateY(180deg); }
-    .card.noun .card-front { background-color: #ffe5b4; }
-    .card.verb .card-front { background-color: #d4f4dd; }
-    .card.adjective .card-front { background-color: #ffd6e7; }
-    .word { font-size: 1.5em; margin-top: 10px; }
-    .syllables { font-style: italic; font-size: 0.9em; margin-bottom: 10px; }
-    .buttons { display: flex; justify-content: center; gap: 10px; margin-bottom: 10px; }
-    .buttons button { padding: 5px 10px; border: 1px solid #333; border-radius: 8px; cursor: pointer; }
-    .translation { margin-top: 20px; font-size: 1.2em; }
-    .back-button { margin-top: auto; padding: 5px 10px; border: 1px solid #333; border-radius: 8px; cursor: pointer; background: #eee; }
+    .filter-button.active { background-color: #ccc; }
+    .card-container { display: flex; flex-wrap: wrap; justify-content: center; }
+    .flip-card {
+      background-color: transparent;
+      width: 250px;
+      height: 200px;
+      margin: 10px;
+      perspective: 1000px;
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      border-radius: 10px;
+    }
+    .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 10px;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+    .flip-card-front { color: black; }
+    .flip-card-back {
+      transform: rotateY(180deg);
+      color: black;
+    }
+    .card-buttons {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+    }
+    .card-button {
+      padding: 5px 10px;
+      margin: 0 5px;
+      border: 2px solid #333;
+      border-radius: 10px;
+      background-color: #fff;
+      cursor: pointer;
+    }
+    .word { font-size: 20px; font-weight: bold; margin-top: 10px; }
+    .syllables { font-size: 14px; font-style: italic; margin-bottom: 10px; }
   </style>
 </head>
 <body>
-  <div class="filter-buttons">
-    <div>
-      <button onclick="filterCategory('All')" id="btn-All">All</button>
-      <button onclick="filterCategory('Noun')" id="btn-Noun">Nouns</button>
-      <button onclick="filterCategory('Verb')" id="btn-Verb">Verbs</button>
-      <button onclick="filterCategory('Adjective')" id="btn-Adjective">Adjectives</button>
-    </div>
-    <div>
-      <button onclick="filterAlphabet('A-Z')" id="btn-A-Z">A-Z</button>
-      <button onclick="filterAlphabet('A-E')" id="btn-A-E">A-E</button>
-      <button onclick="filterAlphabet('F-J')" id="btn-F-J">F-J</button>
-      <button onclick="filterAlphabet('K-O')" id="btn-K-O">K-O</button>
-      <button onclick="filterAlphabet('P-T')" id="btn-P-T">P-T</button>
-      <button onclick="filterAlphabet('U-Z')" id="btn-U-Z">U-Z</button>
-    </div>
+  <h2>LAN2102 Vocabulary Bank</h2>
+  <div class="filter-row" id="category-filters">
+    <button class="filter-button" data-category="All">All</button>
+    <button class="filter-button" data-category="Noun">Nouns</button>
+    <button class="filter-button" data-category="Verb">Verbs</button>
+    <button class="filter-button" data-category="Adjective">Adjectives</button>
   </div>
-  <div id="card-count" class="card-count"></div>
-  <div id="flashcards" class="flashcards"></div>
-  <script src="vocab.js"></script>
+  <div class="filter-row" id="alphabet-filters">
+    <button class="filter-button" data-range="A-E">A-E</button>
+    <button class="filter-button" data-range="F-J">F-J</button>
+    <button class="filter-button" data-range="K-O">K-O</button>
+    <button class="filter-button" data-range="P-T">P-T</button>
+    <button class="filter-button" data-range="U-Z">U-Z</button>
+    <button class="filter-button" data-range="A-Z">A-Z</button>
+  </div>
+  <div class="card-container" id="card-container"></div>
+  <div id="card-counts" style="margin: 20px 0; font-weight: bold;"></div>
+
+  <script src="vocab_data.js"></script>
   <script>
+    const cardContainer = document.getElementById('card-container');
     let selectedCategory = 'All';
-    let selectedAlphabet = 'A-Z';
+    let selectedRange = 'A-Z';
 
-    function filterCategory(category) {
-      selectedCategory = category;
-      document.querySelectorAll('.filter-buttons button').forEach(btn => btn.classList.remove('active'));
-      document.getElementById('btn-' + category).classList.add('active');
-      renderCards();
+    function getColor(category) {
+      if (category.toLowerCase() === 'noun') return '#FFDAB9';
+      if (category.toLowerCase() === 'verb') return '#98FB98';
+      if (category.toLowerCase() === 'adjective') return '#FFB6C1';
+      return '#eee';
     }
 
-    function filterAlphabet(range) {
-      selectedAlphabet = range;
-      document.querySelectorAll('.filter-buttons button').forEach(btn => {
-        if (btn.id.startsWith('btn-') && btn.id.includes('-')) btn.classList.remove('active');
-      });
-      document.getElementById('btn-' + range).classList.add('active');
-      renderCards();
+    function inRange(word, range) {
+      const firstChar = word[0].toUpperCase();
+      if (range === 'A-Z') return true;
+      const ranges = {
+        'A-E': ['A','B','C','D','E'],
+        'F-J': ['F','G','H','I','J'],
+        'K-O': ['K','L','M','N','O'],
+        'P-T': ['P','Q','R','S','T'],
+        'U-Z': ['U','V','W','X','Y','Z']
+        updateCardCounts(filteredData);
+      };
+      return ranges[range].includes(firstChar);
     }
+    
+function updateCardCounts(filteredData) {
+    const total = filteredData.length;
+    const nounCount = filteredData.filter(item => item.Category === "Noun").length;
+    const verbCount = filteredData.filter(item => item.Category === "Verb").length;
+    const adjectiveCount = filteredData.filter(item => item.Category === "Adjective").length;
+
+    document.getElementById("card-counts").innerHTML = `
+        Total Cards: ${total} |
+        Nouns: ${nounCount} |
+        Verbs: ${verbCount} |
+        Adjectives: ${adjectiveCount}
+    `;
+}
 
     function renderCards() {
-      const container = document.getElementById('flashcards');
-      container.innerHTML = '';
-      let filtered = vocabularyData.filter(item => {
-        if (selectedCategory !== 'All' && item.Category.toLowerCase() !== selectedCategory.toLowerCase()) return false;
-        const firstChar = item.Word[0].toUpperCase();
-        switch (selectedAlphabet) {
-          case 'A-E': return 'ABCDE'.includes(firstChar);
-          case 'F-J': return 'FGHIJ'.includes(firstChar);
-          case 'K-O': return 'KLMNO'.includes(firstChar);
-          case 'P-T': return 'PQRST'.includes(firstChar);
-          case 'U-Z': return 'UVWXYZ'.includes(firstChar);
-          default: return true;
-        }
-      });
-
-      document.getElementById('card-count').textContent = `card count: ${filtered.length}`;
-
-      filtered.forEach(item => {
-        const card = document.createElement('div');
-        card.className = `card ${item.Category.toLowerCase()}`;
-        card.innerHTML = `
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="word">${item.Word}</div>
-              <div class="syllables">${item.Syllables}</div>
-              <div class="buttons">
-                <button onclick="playAudio('${item.UK_Audio}')">UK</button>
-                <button onclick="playAudio('${item.US_Audio}')">US</button>
-                <button onclick="flipCard(this)">Meaning</button>
+      cardContainer.innerHTML = '';
+      vocabData.forEach((item, index) => {
+        if ((selectedCategory === 'All' || item.Category.toLowerCase() === selectedCategory.toLowerCase()) &&
+            inRange(item.Word, selectedRange)) {
+          const card = document.createElement('div');
+          card.className = 'flip-card';
+          card.innerHTML = `
+            <div class="flip-card-inner" style="background-color:${getColor(item.Category)}">
+              <div class="flip-card-front">
+                <div class="word">${item.Word}</div>
+                <div class="syllables">${item.Syllables}</div>
+                <div class="card-buttons">
+                  <button class="card-button" onclick="playAudio('${item.UK_Audio}')">UK</button>
+                  <button class="card-button" onclick="playAudio('${item.US_Audio}')">US</button>
+                  <button class="card-button" onclick="flipCard(this)">Meaning</button>
+                </div>
               </div>
-              <div class="card-count"></div>
+              <div class="flip-card-back">
+                <div class="word">${item.Translation}</div>
+                <div class="card-buttons">
+                  <button class="card-button" onclick="flipCard(this)">Back</button>
+                </div>
+              </div>
             </div>
-            <div class="card-back">
-              <div class="translation">${item.Translation}</div>
-              <button class="back-button" onclick="flipCard(this)">Back</button>
-            </div>
-          </div>
-        `;
-        container.appendChild(card);
+          `;
+          cardContainer.appendChild(card);
+        }
       });
     }
 
     function flipCard(button) {
-      const card = button.closest('.card');
+      const card = button.closest('.flip-card');
       card.classList.toggle('flipped');
     }
 
     function playAudio(url) {
-      new Audio(url).play();
+      const audio = new Audio(url);
+      audio.play();
     }
 
-    filterCategory('All');
-    filterAlphabet('A-Z');
+    function setActiveButton(groupId, value) {
+      const buttons = document.getElementById(groupId).querySelectorAll('.filter-button');
+      buttons.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.category === value || btn.dataset.range === value);
+      });
+    }
+
+    document.getElementById('category-filters').addEventListener('click', e => {
+      if (e.target.classList.contains('filter-button')) {
+        selectedCategory = e.target.dataset.category;
+        setActiveButton('category-filters', selectedCategory);
+        renderCards();
+      }
+    });
+
+    document.getElementById('alphabet-filters').addEventListener('click', e => {
+      if (e.target.classList.contains('filter-button')) {
+        selectedRange = e.target.dataset.range;
+        setActiveButton('alphabet-filters', selectedRange);
+        renderCards();
+      }
+    });
+
+    renderCards();
   </script>
 </body>
 </html>
