@@ -109,6 +109,7 @@
         'U-Z': ['U','V','W','X','Y','Z']
       };
       return ranges[range].includes(firstChar);
+      document.getElementById('card-count').textContent = `Number of cards: ${filteredData.length}`;
     }
 
     function renderCards() {
