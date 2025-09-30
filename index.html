@@ -190,5 +190,29 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 </script>
+
+<script>
+  function sortCardsAlphabetically(containerSelector) {
+    const container = document.querySelector(containerSelector);
+    if (!container) return;
+
+    const cards = Array.from(container.querySelectorAll(".card"));
+    cards.sort((a, b) => {
+      const textA = a.textContent.trim().toLowerCase();
+      const textB = b.textContent.trim().toLowerCase();
+      return textA.localeCompare(textB);
+    });
+
+    container.innerHTML = "";
+    cards.forEach(card => container.appendChild(card));
+  }
+
+  // Automatically sort cards when the page loads
+  document.addEventListener("DOMContentLoaded", function () {
+    sortCardsAlphabetically("#card-container");
+  });
+</script>
+
+  
 </body>
 </html>
