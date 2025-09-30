@@ -1,0 +1,2438 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Vocabulary Flashcard Game</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; text-align: center; }
+button { margin: 5px; padding: 10px 15px; border-radius: 10px; border: 2px solid #333; cursor: pointer; }
+button.active { background-color: #333; color: white; }
+.card-container { display: flex; flex-wrap: wrap; justify-content: center; margin-top: 20px; }
+.flip-card { background-color: transparent; width: 250px; height: 200px; perspective: 1000px; margin: 10px; border-radius: 15px; }
+.flip-card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s; transform-style: preserve-3d; border-radius: 15px; }
+.flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 15px; padding: 10px; box-sizing: border-box; }
+.flip-card-front { color: black; }
+.flip-card-back { transform: rotateY(180deg); display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.card-buttons { margin-top: 10px; }
+.card-buttons button { margin: 2px; }
+.card-count { margin-top: 20px; font-weight: bold; }
+</style>
+</head>
+<body>
+<h2>Vocabulary Flashcard Game</h2>
+<div id="category-buttons">
+<button class="active" onclick="filterCategory('All')">All</button>
+<button onclick="filterCategory('Noun')">Nouns</button>
+<button onclick="filterCategory('Verb')">Verbs</button>
+<button onclick="filterCategory('Adjective')">Adjectives</button>
+</div>
+<div id="alphabet-buttons" style="margin-top:10px;">
+<button class="active" onclick="filterAlphabet('A-Z')">A-Z</button>
+<button onclick="filterAlphabet('A-E')">A-E</button>
+<button onclick="filterAlphabet('F-J')">F-J</button>
+<button onclick="filterAlphabet('K-O')">K-O</button>
+<button onclick="filterAlphabet('P-T')">P-T</button>
+<button onclick="filterAlphabet('U-Z')">U-Z</button>
+</div>
+<div class="card-count" id="card-count"></div>
+<div class="card-container" id="card-container">
+<div class="flip-card" data-category="Adjective" data-word="additional">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>additional</h3>
+<p><em>ad-di-tion-al</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Additional&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Additional&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>額外的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="affordable">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>affordable</h3>
+<p><em>af-ford-a-ble</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Affordable&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Affordable&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>負擔得起的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="allow">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>allow</h3>
+<p><em>al-low</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Allow&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Allow&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>允許</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="appealing">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>appealing</h3>
+<p><em>ap-peal-ing</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Appealing&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Appealing&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>吸引人的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="arrange">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>arrange</h3>
+<p><em>ar-range</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Arrange&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Arrange&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>安排</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Noun" data-word="attention">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFDAB9;">
+<h3>attention</h3>
+<p><em>at-ten-tion</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Attention&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Attention&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFDAB9;">
+<p>注意力</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="attract">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>attract</h3>
+<p><em>at-tract</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Attract&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Attract&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>吸引</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Noun" data-word="attraction">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFDAB9;">
+<h3>attraction</h3>
+<p><em>at-trac-tion</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Attraction&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Attraction&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFDAB9;">
+<p>景點、吸引力</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="attractive">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>attractive</h3>
+<p><em>at-trac-tive</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Attractive&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Attractive&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>有吸引力的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Noun" data-word="attractiveness">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFDAB9;">
+<h3>attractiveness</h3>
+<p><em>at-trac-tive-ness</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Attractiveness&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Attractiveness&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFDAB9;">
+<p>吸引力</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="avoid">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>avoid</h3>
+<p><em>a-void</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Avoid&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Avoid&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>避免</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Noun" data-word="awareness">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFDAB9;">
+<h3>awareness</h3>
+<p><em>a-ware-ness</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Awareness&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Awareness&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFDAB9;">
+<p>意識</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="boost">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>boost</h3>
+<p><em>boost</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Boost&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Boost&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>提升</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="boring">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>boring</h3>
+<p><em>bor-ing</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Boring&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Boring&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>無聊的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="bring">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>bring</h3>
+<p><em>bring</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Bring&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Bring&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>帶來</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Noun" data-word="budget">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFDAB9;">
+<h3>budget</h3>
+<p><em>budg-et</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Budget&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Budget&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFDAB9;">
+<p>預算</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="build">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>build</h3>
+<p><em>build</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Build&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Build&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>建立</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Noun" data-word="burden">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFDAB9;">
+<h3>burden</h3>
+<p><em>bur-den</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Burden&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Burden&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFDAB9;">
+<p>負擔</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="catch">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>catch</h3>
+<p><em>catch</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Catch&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Catch&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>抓住</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Noun" data-word="chance">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFDAB9;">
+<h3>chance</h3>
+<p><em>chance</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Chance&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Chance&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFDAB9;">
+<p>機會</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="collect">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>collect</h3>
+<p><em>col-lect</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Collect&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Collect&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>收集</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="common">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>common</h3>
+<p><em>com-mon</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Common&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Common&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>常見的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Noun" data-word="concern">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFDAB9;">
+<h3>concern</h3>
+<p><em>con-cern</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Concern&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Concern&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFDAB9;">
+<p>關心</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="concern">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>concern</h3>
+<p><em>con-cern</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Concern&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Concern&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>關心</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Noun" data-word="confidence">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFDAB9;">
+<h3>confidence</h3>
+<p><em>con-fi-dence</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Confidence&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Confidence&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFDAB9;">
+<p>信心</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="connect">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>connect</h3>
+<p><em>con-nect</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Connect&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Connect&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>連接</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Noun" data-word="control">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFDAB9;">
+<h3>control</h3>
+<p><em>con-trol</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Control&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Control&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFDAB9;">
+<p>控制</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="convenient">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>convenient</h3>
+<p><em>con-ven-ient</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Convenient&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Convenient&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>方便的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="cost-effective">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>cost-effective</h3>
+<p><em>cost ef-fec-tive</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Cost-effective&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Cost-effective&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>成本效益高的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="cost-efficient">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>cost-efficient</h3>
+<p><em>cost ef-fi-cient</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Cost-efficient&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Cost-efficient&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>成本效率高的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="cost-saving">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>cost-saving</h3>
+<p><em>cost sav-ing</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Cost-saving&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Cost-saving&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>節省成本的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="costly">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>costly</h3>
+<p><em>cost-ly</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Costly&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Costly&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>昂貴的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="cover">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>cover</h3>
+<p><em>co-ver</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Cover&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Cover&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>覆蓋</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="create">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>create</h3>
+<p><em>cre-ate</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Create&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Create&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>創造</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Noun" data-word="customer">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFDAB9;">
+<h3>customer</h3>
+<p><em>cus-tom-er</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Customer&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Customer&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFDAB9;">
+<p>顧客</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="deliver">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>deliver</h3>
+<p><em>de-liv-er</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Deliver&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Deliver&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>傳遞</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="difficult">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>difficult</h3>
+<p><em>dif-fi-cult</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Difficult&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Difficult&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>困難的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Noun" data-word="difficulty">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFDAB9;">
+<h3>difficulty</h3>
+<p><em>dif-fi-cult-y</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Difficulty&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Difficulty&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFDAB9;">
+<p>困難</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Noun" data-word="discount">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFDAB9;">
+<h3>discount</h3>
+<p><em>dis-count</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Discount&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Discount&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFDAB9;">
+<p>折扣</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="discover">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>discover</h3>
+<p><em>dis-cov-er</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Discover&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Discover&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>發現</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Noun" data-word="doubt">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFDAB9;">
+<h3>doubt</h3>
+<p><em>doubt</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Doubt&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Doubt&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFDAB9;">
+<p>懷疑</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="draw">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>draw</h3>
+<p><em>draw</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Draw&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Draw&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>畫</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="eco-friendly">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>eco-friendly</h3>
+<p><em>e-co friend-ly</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Eco-friendly&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Eco-friendly&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>環保的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Noun" data-word="effect">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFDAB9;">
+<h3>effect</h3>
+<p><em>ef-fect</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Effect&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Effect&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFDAB9;">
+<p>效果</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="effective">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>effective</h3>
+<p><em>ef-fec-tive</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Effective&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Effective&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>有效的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Noun" data-word="effectiveness">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFDAB9;">
+<h3>effectiveness</h3>
+<p><em>ef-fect-ive-ness</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Effectiveness&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Effectiveness&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFDAB9;">
+<p>有效性</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Noun" data-word="effort">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFDAB9;">
+<h3>effort</h3>
+<p><em>ef-fort</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Effort&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Effort&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFDAB9;">
+<p>努力</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="encourage">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>encourage</h3>
+<p><em>en-cou-rage</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Encourage&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Encourage&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>鼓勵</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="enjoyable">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>enjoyable</h3>
+<p><em>en-joy-a-ble</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Enjoyable&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Enjoyable&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>愉快的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="enough">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>enough</h3>
+<p><em>e-nough</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Enough&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Enough&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>足夠的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="environmental">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>environmental</h3>
+<p><em>en-vi-ron-ment-al</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Environmental&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Environmental&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>環境的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Noun" data-word="excitement">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFDAB9;">
+<h3>excitement</h3>
+<p><em>ex-cite-ment</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Excitement&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Excitement&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFDAB9;">
+<p>興奮</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="exciting">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>exciting</h3>
+<p><em>ex-cit-ing</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Exciting&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Exciting&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>激動人心的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="expensive">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>expensive</h3>
+<p><em>ex-pen-sive</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Expensive&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Expensive&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>昂貴的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="extra">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>extra</h3>
+<p><em>ex-tra</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Extra&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Extra&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>額外的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="eye-catching">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>eye-catching</h3>
+<p><em>eye catch-ing</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Eye-catching&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Eye-catching&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>引人注目的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Noun" data-word="feedback">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFDAB9;">
+<h3>feedback</h3>
+<p><em>feed-back</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Feedback&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Feedback&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFDAB9;">
+<p>回饋</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Noun" data-word="flyer">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFDAB9;">
+<h3>flyer</h3>
+<p><em>fly-er</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Flyer&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Flyer&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFDAB9;">
+<p>傳單</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="gain">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>gain</h3>
+<p><em>gain</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Gain&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Gain&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>獲得</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="get">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>get</h3>
+<p><em>get</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Get&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Get&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>得到</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="handle">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>handle</h3>
+<p><em>hand-le</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Handle&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Handle&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>處理</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="hard">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>hard</h3>
+<p><em>hard</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Hard&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Hard&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>困難的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="help">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>help</h3>
+<p><em>help</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Help&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Help&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>幫助</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="helpful">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>helpful</h3>
+<p><em>help-ful</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Helpful&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Helpful&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>有幫助的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Noun" data-word="image">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFDAB9;">
+<h3>image</h3>
+<p><em>im-age</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Image&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Image&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFDAB9;">
+<p>圖像</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Noun" data-word="impact">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFDAB9;">
+<h3>impact</h3>
+<p><em>im-pact</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Impact&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Impact&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFDAB9;">
+<p>衝擊</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="impractical">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>impractical</h3>
+<p><em>im-prac-ti-cal</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Impractical&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Impractical&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>不切實際的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Noun" data-word="impression">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFDAB9;">
+<h3>impression</h3>
+<p><em>im-pres-sion</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Impression&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Impression&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFDAB9;">
+<p>印象</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="impressive">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>impressive</h3>
+<p><em>im-pres-sive</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Impressive&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Impressive&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>印象深刻的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="inadequate">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>inadequate</h3>
+<p><em>in-a-de-quate</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Inadequate&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Inadequate&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>不足的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="increase">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>increase</h3>
+<p><em>in-crease</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Increase&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Increase&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>增加</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="ineffective">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>ineffective</h3>
+<p><em>in-ef-fec-tive</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Ineffective&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Ineffective&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>無效的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="inexpensive">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>inexpensive</h3>
+<p><em>in-ex-pen-sive</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Inexpensive&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Inexpensive&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>不昂貴的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Noun" data-word="information">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFDAB9;">
+<h3>information</h3>
+<p><em>in-form-a-tion</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Information&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Information&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFDAB9;">
+<p>信息</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="insufficient">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>insufficient</h3>
+<p><em>in-suf-fi-cient</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Insufficient&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Insufficient&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>不足的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="interact">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>interact</h3>
+<p><em>in-ter-act</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Interact&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Interact&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>互動</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Noun" data-word="interaction">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFDAB9;">
+<h3>interaction</h3>
+<p><em>in-ter-ac-tion</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Interaction&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Interaction&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFDAB9;">
+<p>互動</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="interactive">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>interactive</h3>
+<p><em>in-ter-ac-tive</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Interactive&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Interactive&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>互動的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="interesting">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>interesting</h3>
+<p><em>in-ter-est-ing</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Interesting&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Interesting&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>有趣的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="introduce">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>introduce</h3>
+<p><em>in-tro-duce</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Introduce&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Introduce&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>介紹</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="leave">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>leave</h3>
+<p><em>leave</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Leave&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Leave&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>離開</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="let">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>let</h3>
+<p><em>let</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Let&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Let&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>讓</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="make">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>make</h3>
+<p><em>make</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Make&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Make&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>製作</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="manage">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>manage</h3>
+<p><em>man-age</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Manage&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Manage&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>管理</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="meet">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>meet</h3>
+<p><em>meet</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Meet&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Meet&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>見面</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="menaingful">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>menaingful</h3>
+<p><em>mean-ing-ful</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Meaningful&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Meaningful&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>有意義的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="money-saving">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>money-saving</h3>
+<p><em>mon-ey sav-ing</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Money-saving&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Money-saving&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>節省金錢的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="need">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>need</h3>
+<p><em>need</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Need&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Need&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>需要</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="negative">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>negative</h3>
+<p><em>ne-ga-tive</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Negative&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Negative&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>負面的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="offer">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>offer</h3>
+<p><em>off-er</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Offer&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Offer&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>提供</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="old-fashioned">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>old-fashioned</h3>
+<p><em>old fash-ioned</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Old-fashioned&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Old-fashioned&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>老式的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="organize">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>organize</h3>
+<p><em>or-gan-ize</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Organize&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Organize&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>組織</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="outstanding">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>outstanding</h3>
+<p><em>out-stand-ing</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Outstanding&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Outstanding&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>傑出的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="overpriced">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>overpriced</h3>
+<p><em>o-ver-priced</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Overpriced&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Overpriced&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>價格過高的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="plan">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>plan</h3>
+<p><em>plan</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Plan&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Plan&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>計劃</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="popular">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>popular</h3>
+<p><em>po-pu-lar</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Popular&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Popular&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>受歡迎的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="practical">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>practical</h3>
+<p><em>prac-ti-cal</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Practical&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Practical&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>實用的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="prefer">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>prefer</h3>
+<p><em>pre-fer</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=prefer&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=prefer&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>偏好、寧可、比較喜歡</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Noun" data-word="preference">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFDAB9;">
+<h3>preference</h3>
+<p><em>pref-er-ence</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=preference&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=preference&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFDAB9;">
+<p>偏爱</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="prepare">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>prepare</h3>
+<p><em>pre-pare</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Prepare&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Prepare&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>準備</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="pricey">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>pricey</h3>
+<p><em>pric-ey</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Pricey&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Pricey&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>昂貴的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="promote">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>promote</h3>
+<p><em>pro-mote</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Promote&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Promote&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>推廣</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="promotional">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>promotional</h3>
+<p><em>pro-mo-tion-al</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Promotional&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Promotional&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>促銷的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="provide">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>provide</h3>
+<p><em>pro-vide</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Provide&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Provide&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>提供</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="reach">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>reach</h3>
+<p><em>reach</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Reach&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Reach&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>到達</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="recommend">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>recommend</h3>
+<p><em>rec-om-mend</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=recommend&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=recommend&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>推薦</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Noun" data-word="recommendation">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFDAB9;">
+<h3>recommendation</h3>
+<p><em>rec-om-mend-a-tion</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=recommendation&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=recommendation&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFDAB9;">
+<p>推薦</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="recommeneded">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>recommeneded</h3>
+<p><em>rec-om-mend-ed</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=recommended&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=recommended&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>已推薦過的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="require">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>require</h3>
+<p><em>re-quire</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Require&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Require&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>要求</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="reserve">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>reserve</h3>
+<p><em>re-serve</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Reserve&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Reserve&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>預訂</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="sharable">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>sharable</h3>
+<p><em>shar-a-ble</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Sharable&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Sharable&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>可分享的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="show">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>show</h3>
+<p><em>show</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Show&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Show&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>展示</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="simple">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>simple</h3>
+<p><em>sim-ple</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Simple&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Simple&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>簡單的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="special">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>special</h3>
+<p><em>spe-cial</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Special&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Special&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>特別的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="suggest">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>suggest</h3>
+<p><em>sug-gest</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=suggest&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=suggest&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>建議</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="suggested">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>suggested</h3>
+<p><em>sug-gest-ed</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=suggested&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=suggested&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>已建議過的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Noun" data-word="suggestion">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFDAB9;">
+<h3>suggestion</h3>
+<p><em>sug-ges-tion</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=suggestion&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=suggestion&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFDAB9;">
+<p>建議</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="suitable">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>suitable</h3>
+<p><em>suit-a-ble</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Suitable&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Suitable&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>合適的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Verb" data-word="support">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#98FB98;">
+<h3>support</h3>
+<p><em>sup-port</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Support&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Support&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#98FB98;">
+<p>支持</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="time-consuming">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>time-consuming</h3>
+<p><em>time-con-sum-ing</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Time-consuming&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Time-consuming&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>耗時的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="time-saving">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>time-saving</h3>
+<p><em>time sav-ing</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Time-saving&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Time-saving&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>節省時間的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="timeless">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>timeless</h3>
+<p><em>time-less</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Timeless&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Timeless&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>永恆的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="traditional">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>traditional</h3>
+<p><em>tra-di-tion-al</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Traditional&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Traditional&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>傳統的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="unaffordable">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>unaffordable</h3>
+<p><em>un-af-ford-a-ble</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Unaffordable&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Unaffordable&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>負擔不起的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="unappealing">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>unappealing</h3>
+<p><em>un-ap-peal-ing</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Unappealing&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Unappealing&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>不吸引人的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="unattractive">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>unattractive</h3>
+<p><em>un-at-trac-tive</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Unattractive&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Unattractive&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>不具吸引力的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="uninteresting">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>uninteresting</h3>
+<p><em>un-in-ter-est-ing</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Uninteresting&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Uninteresting&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>無趣的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="unsurprising">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>unsurprising</h3>
+<p><em>un-sur-pris-ing</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Unsurprising&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Unsurprising&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>不令人驚訝的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="useful">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>useful</h3>
+<p><em>use-ful</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Useful&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Useful&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>有用的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+<div class="flip-card" data-category="Adjective" data-word="useless">
+<div class="flip-card-inner">
+<div class="flip-card-front" style="background-color:#FFB6C1;">
+<h3>useless</h3>
+<p><em>use-less</em></p>
+<div class="card-buttons">
+
+
+
+</div>
+<div class="card-count-text"></div>
+<div style="position: absolute; bottom: 10px; width: 100%; text-align: center;"><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Useless&amp;type=1')">UK</button><button onclick="playAudio('https://dict.youdao.com/dictvoice?audio=Useless&amp;type=2')">US</button><button onclick="flipCard(this)">Meaning</button></div></div>
+<div class="flip-card-back" style="background-color:#FFB6C1;">
+<p>無用的</p>
+<button onclick="flipCardBack(this)">Back</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+let currentCategory = "All";
+let currentAlphabet = "A-Z";
+
+function playAudio(url) {
+  new Audio(url).play();
+}
+
+function flipCard(button) {
+  button.closest('.flip-card-inner').style.transform = "rotateY(180deg)";
+}
+
+function flipCardBack(button) {
+  button.closest('.flip-card-inner').style.transform = "rotateY(0deg)";
+}
+
+function filterCategory(category) {
+  currentCategory = category;
+  document.querySelectorAll("#category-buttons button").forEach(btn => btn.classList.remove("active"));
+  document.querySelector(`#category-buttons button[onclick="filterCategory('${category}')"]`).classList.add("active");
+  updateCards();
+}
+
+function filterAlphabet(range) {
+  currentAlphabet = range;
+  document.querySelectorAll("#alphabet-buttons button").forEach(btn => btn.classList.remove("active"));
+  document.querySelector(`#alphabet-buttons button[onclick="filterAlphabet('${range}')"]`).classList.add("active");
+  updateCards();
+}
+
+function updateCards() {
+  const cards = document.querySelectorAll(".flip-card");
+  let count = 0;
+  cards.forEach(card => {
+    const category = card.getAttribute("data-category");
+    const word = card.getAttribute("data-word").toUpperCase();
+    let show = (currentCategory === "All" || category === currentCategory);
+    if (show) {
+      switch (currentAlphabet) {
+        case "A-E": show = /^[A-E]/.test(word); break;
+        case "F-J": show = /^[F-J]/.test(word); break;
+        case "K-O": show = /^[K-O]/.test(word); break;
+        case "P-T": show = /^[P-T]/.test(word); break;
+        case "U-Z": show = /^[U-Z]/.test(word); break;
+      }
+    }
+    card.style.display = show ? "block" : "none";
+    if (show) count++;
+  });
+  document.getElementById("card-count").innerText = "Card Count: " + count;
+}
+
+updateCards();
+</script>
+</body>
+</html>
